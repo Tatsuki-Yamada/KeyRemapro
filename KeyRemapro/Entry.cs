@@ -30,13 +30,16 @@ namespace KeyRemapro
         {
             // アイコンを右クリックしたときのメニューを返却
             var menu = new ContextMenuStrip();
+
+            menu.Items.Add("設定を開く", null, (s, e) =>
+            {
+                Utility.ShowOnlyOneForm(typeof(SettingForm));
+            });
+
             menu.Items.Add("終了", null, (s, e) => {
                 Application.Exit();
             });
-            menu.Items.Add("設定", null, (s, e) =>
-            {
-                
-            });
+            
             return menu;
         }
     }
