@@ -41,9 +41,6 @@
         {
             _hooker.OnKeyDown += (s, ea) =>
             {
-                if (ea.Key == Keys.F14)
-                    _pressingTriggerKey = true;
-
                 if (_pressingTriggerKey)
                 {
                     switch (ea.Key)
@@ -66,6 +63,13 @@
                             return;
                     }
                 }
+                
+                if (ea.Key == Keys.F13)
+                {
+                    _pressingTriggerKey = true;
+                    ea.RetCode = 1;
+                    return;
+                }
 
                 ea.RetCode = 0;
             };
@@ -79,7 +83,7 @@
         {
             _hooker.OnKeyUp += (s, ea) =>
             {
-                if (ea.Key == Keys.F14)
+                if (ea.Key == Keys.F13)
                     _pressingTriggerKey = false;
             };
         }
